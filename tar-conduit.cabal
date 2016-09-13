@@ -19,8 +19,6 @@ description:     This library is for working with \"@.tar@\" archive files. It
 build-type:      Simple
 cabal-version:   >=1.8
 
-flag old-time
-
 Flag dev
     Description:   Turn on development settings, like auto-reload templates.
     Default:       False
@@ -31,17 +29,12 @@ Flag prof
 
 library
   build-depends: base == 4.*, filepath,
-                 bytestring, directory
+                 bytestring, directory, time
                  , conduit
                  , conduit-extra
                  , mtl
                  , transformers
                  , utf8-string
-
-  if flag(old-time)
-    build-depends: directory < 1.2, old-time
-  else
-    build-depends: directory >= 1.2, time
 
   exposed-modules:
     Codec.Archive.Tar
